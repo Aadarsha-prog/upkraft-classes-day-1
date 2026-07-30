@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --bg-primary: #1053fc47;
+
+  --height: 100px;
+  --bold: 200;
+}
+
+.container {
+  background-color: red;
+  height: 90vh;
+  width: 100vw;
+}
