@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer src="./script.js"></script>
+    <style>
+      [data-attribute-name] {
+        background-color: black;
+        color: white;
+      }
+
+      [data-attribute-name="attribute-value-1"] {
+        background-color: red;
+        color: green;
+      }
+
+      .sidebar {
+        position: fixed;
+        right: 0;
+        width: 300px;
+        height: 100dvh;
+        padding: 20px;
+        border: 1px solid #e4e3e3;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        top: 0;
+      }
+      .sidebar__button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      [data-sidebar-open="false"] {
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      [data-sidebar-open="true"] {
+        transform: translateX(0);
+        transition: transform 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="id-1-selection">id1</div>
+    <div id="id-2-selection">id2</div>
+    <div class="class-selection">class 1</div>
+    <div class="class-selection">class 2</div>
+    <div class="class-selection">class 3</div>
+    <div class="class-selection">class 4</div>
+
+    <!-- Data attributes -->
+    <div data-attribute-name="attribute-value-1">Some element</div>
+    <div data-attribute-name="attribute-value-2">Some element 2</div>
+    <button id="btn-open-sidebar">
+      <span>Open Side bar</span>
+    </button>
+
+    <!-- Sidebar / SHeet -->
+    <aside class="sidebar" data-sidebar-open="false">
+      <h2>Sidebar</h2>
+      <button id="btn-close-sidebar" class="sidebar__button">X</button>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+        voluptatum, quod, quia, voluptates quibusdam voluptatibus quas quibusdam
+        quae quibusdam. Quisquam voluptatum, quod, quia, voluptates quibusdam
+        voluptatibus quas quibusdam quae quibusdam.
+      </p>
+    </aside>
+  </body>
+</html>
