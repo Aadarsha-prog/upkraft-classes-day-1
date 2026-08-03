@@ -24,7 +24,7 @@ todos.forEach((todo) => {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  // Get the input value
+  // Get the input valuezzz
   const inputValue = input.value;
 
   createNewTodoInUI(inputValue);
