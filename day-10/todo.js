@@ -1,6 +1,7 @@
 const form = document.querySelector("form");
 const input = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
+const clearTodosButton = document.querySelector("#clear-todos");
 
 const localTodos = localStorage.getItem("todos");
 
@@ -27,6 +28,11 @@ form.addEventListener("submit", (event) => {
   // Get the input value
   const inputValue = input.value;
 
+  if (inputValue.trim() === "") {
+    alert("Empty todo cannot be added.");
+    return;
+  }
+
   createNewTodoInUI(inputValue);
 
   todos.push(inputValue);
@@ -34,6 +40,12 @@ form.addEventListener("submit", (event) => {
   localStorage.setItem("todos", JSON.stringify(todos));
 
   input.value = ""; // Clear the input field after adding the todo item
+});
+
+clearTodosButton.addEventListener("click", () => {
+  todos = [];
+  localStorage.removeItem("todos");
+  todoList.innerHTML = ""; // Clear the UI
 });
 
 function createNewTodoInUI(todo) {
