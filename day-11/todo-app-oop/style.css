@@ -69,7 +69,6 @@ button:hover {
     flex: 1;
 }
 
-/* <s> Strikethrough style for completed items */
 #todo-list li.completed p {
     text-decoration: line-through;
     color: #888888;
