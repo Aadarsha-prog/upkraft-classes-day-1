@@ -11,6 +11,11 @@ export const renderTodo = (todo) => {
     li.dataset.id = todo.id;
     deleteButton.textContent = 'Delete';
 
+    if (todo.completed) {
+        li.classList.add('completed');
+        checkBox.checked = true;
+    }
+
     li.appendChild(checkBox);
     li.appendChild(p);
     li.appendChild(deleteButton);

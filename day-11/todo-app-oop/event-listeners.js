@@ -2,15 +2,29 @@ import { todoForm, todoInput, todoListContainer, clearAllButton } from './select
 import { renderTodo } from './ui.js';
 import { todoList } from './models/todoList.js';
 
+const saveTodos = () => {
+    localStorage.setItem('todos', JSON.stringify(todoList.todos));
+};
+
 export const initEventListeners = () => {
+    const initialTodos = JSON.parse(localStorage.getItem('todos')) || [];
+
+    initialTodos.forEach((savedTodo) => {
+        const todo = todoList.addTodo(savedTodo.text);
+        todo.id = savedTodo.id;
+        todo.completed = savedTodo.completed;
+        renderTodo(todo);
+    });
+
     todoForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const todoText = todoInput.value.trim();
-
         if (!todoText) return;
 
         const newTodo = todoList.addTodo(todoText);
         renderTodo(newTodo);
+        saveTodos();
+
         todoInput.value = '';
     });
 
@@ -22,9 +36,9 @@ export const initEventListeners = () => {
             const targetTodo = todoList.todos.find((todo) => todo.id === todoId);
             if (targetTodo) {
                 targetTodo.toggleCompleted();
+                liElement.classList.toggle('completed', targetTodo.completed);
+                saveTodos();
             }
-
-            liElement.classList.toggle('completed', event.target.checked);
         }
     });
 
@@ -35,11 +49,13 @@ export const initEventListeners = () => {
 
             todoList.removeTodo(todoId);
             liElement.remove();
+            saveTodos();
         }
     });
 
     clearAllButton.addEventListener('click', () => {
         todoList.clearTodo();
         todoListContainer.replaceChildren();
+        saveTodos();
     });
 };
