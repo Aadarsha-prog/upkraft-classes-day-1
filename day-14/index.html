@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer src="./cookies.js"></script>
+  </head>
+  <body>
+    <div>
+      <form id="cookie-form">
+        <input type="text" id="key" placeholder="Key" />
+        <input type="text" id="value" placeholder="Value" />
+        <button id="set-cookie">Set Cookie</button>
+      </form>
+    </div>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="cookies-table-body">
+        <tr>
+          <td>exampleKey</td>
+          <td>exampleValue</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
